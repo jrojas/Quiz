@@ -43,10 +43,10 @@ var htmlQuiz = (function() {
    
     var correctAnswer = 0;
     var questionNumber = 0;
+   
     var answer = "";
     var liOpen = '<ol><li>';
     var liClose ='</li></ol>';
-   
     var choiceZero = questions[questionNumber].choices[0];
     var choiceOne = questions[questionNumber].choices[1];
     var choiceTwo = questions[questionNumber].choices[2];
@@ -61,29 +61,25 @@ var htmlQuiz = (function() {
      };
     var appendQuestionChoices = function(){
         
-        $('.question').html(liOpen + questions[questionNumber].question + liClose);
+        $('.question').html(liOpen + questions[questionNumber].question  + liClose);
+       
         
-        $('.enterForm').html(spanOpen + '<input type="radio" name="option" class="option" value="0">' + choiceZero + spanClose);
-        $('.enterForm').html(spanOpen + '<input type="radio" name="option" class="option" value="1">' + choiceOne + spanClose);
-        $('.enterForm').html(spanOpen + '<input type="radio" name="option" class="option" value="2">' + choiceTwo + spanClose);
-    
+       
     };
     
     // Submit Answer
     var submitAnswer = function() {
         
-       // $(form).on("click", ".btnSubmit", function(e) {
-           
-           // e.preventDefault();
-          //  questionNumber++;
-          //  appendQuestionChoices();
-            
-          //  });
+     
         
-       $('.enterForm').click(function(e){
-             e.preventDefault();
+       $('.btnSubmit').click(function(){
+             
             questionNumber++;
+        
             appendQuestionChoices();
+           
+           
+            
           
             });
           };
