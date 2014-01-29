@@ -74,6 +74,12 @@ section{
     display:block;
 }
 
+.question li {
+font-weight: bold;
+padding-bottom:10px;
+        
+}
+
 .choices{
 
   display:block;
@@ -85,6 +91,6 @@ section{
 }
 
 .option{
-    display:block;
+    
 
 }

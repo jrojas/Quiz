@@ -1,11 +1,5 @@
 var htmlQuiz = (function() {
  
-    // public variables for Quiz
-   
-    var numberCorrectAnswer = 0;
-    var questionNumber = 0;
-    var liOpen = '<ol><li>';
-    var liClose ='</li></ol>';
    
     //Questions Array
     var questions = [
@@ -43,28 +37,54 @@ var htmlQuiz = (function() {
         correctAnswer : 1,
       
     }]
+    
+    
+    // public variables for Quiz
+   
+    var correctAnswer = 0;
+    var questionNumber = 0;
+    var answer = "";
+    var liOpen = '<ol><li>';
+    var liClose ='</li></ol>';
+   
+    var choiceZero = questions[questionNumber].choices[0];
+    var choiceOne = questions[questionNumber].choices[1];
+    var choiceTwo = questions[questionNumber].choices[2];
+    var spanOpen = '<span class="choices">';
+    var spanClose = '<span class="choices">';
   
     // public init method to be exposed to the document ready function 
     var init = function(){
         
-        submitAnswer();
-        appendQuestion();
+            appendQuestionChoices();
+            submitAnswer();
      };
-    var appendQuestion = function(){
-        var questionDiv = $('.question');
-        questionDiv.html(liOpen + questions[questionNumber].question + liClose);
+    var appendQuestionChoices = function(){
+        
+        $('.question').html(liOpen + questions[questionNumber].question + liClose);
+        
+        $('.enterForm').html(spanOpen + '<input type="radio" name="option" class="option" value="0">' + choiceZero + spanClose);
+        $('.enterForm').html(spanOpen + '<input type="radio" name="option" class="option" value="1">' + choiceOne + spanClose);
+        $('.enterForm').html(spanOpen + '<input type="radio" name="option" class="option" value="2">' + choiceTwo + spanClose);
     
     };
     
     // Submit Answer
     var submitAnswer = function() {
         
-        $('form').on("click", ".btnSubmit", function(d) {
-            d.preventDefault();
-            validateAnswer();
-            questionNumber++;
-            appendQuestion();
+       // $(form).on("click", ".btnSubmit", function(e) {
+           
+           // e.preventDefault();
+          //  questionNumber++;
+          //  appendQuestionChoices();
             
+          //  });
+        
+       $('.enterForm').click(function(e){
+             e.preventDefault();
+            questionNumber++;
+            appendQuestionChoices();
+          
             });
           };
 
