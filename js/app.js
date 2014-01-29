@@ -6,10 +6,7 @@ var htmlQuiz = (function() {
     var questionNumber = 0;
     var liOpen = '<ol><li>';
     var liClose ='</li></ol>';
-  
-    
-    
-    
+   
     //Questions Array
     var questions = [
         {
@@ -46,82 +43,46 @@ var htmlQuiz = (function() {
         correctAnswer : 1,
       
     }]
-    
-        
+  
     // public init method to be exposed to the document ready function 
     var init = function(){
-        firstQuestion();
+        
         submitAnswer();
-        validateAnswer();
-        
-  
-    };
-    
-    
-    
-    var firstQuestion = function(){
-         var questionDiv = $('.question');
-         questionDiv.append(liOpen + questions[questionNumber].question + liClose);
-        
+        appendQuestion();
+     };
+    var appendQuestion = function(){
+        var questionDiv = $('.question');
+        questionDiv.html(liOpen + questions[questionNumber].question + liClose);
     
     };
-    
-    
-    
-    
-    
     
     // Submit Answer
     var submitAnswer = function() {
         
-    $(form).on("click", ".btnSubmit", function() {
-        validateAnswer();
-        questionNumber++;
-        newQuestion();
-       
-       
-    });
-       
-        
-    };
-    
-       
+        $('form').on("click", ".btnSubmit", function(d) {
+            d.preventDefault();
+            validateAnswer();
+            questionNumber++;
+            appendQuestion();
+            
+            });
+          };
+
       //validateAnswer
     var  validateAnswer = function() {
        
-        console("Validate");
-        
-     
-        
+        console.log("Validate");
+      
     };
-    
-    //new question
-    var  newQuestion = function() {
-        console("newQuestion");
-   
-    };
-    
-    
-    
-  
- 
-    // public API
-    return {
-        init: init
-      
-        
-       
-        
-    };
+    // public API
+    return {init: init};
  
 })();
 
 $(document).ready(function()
 {
     htmlQuiz.init();
-    console.log(htmlQuiz.init);
-   
-
+ 
 });
      
 
