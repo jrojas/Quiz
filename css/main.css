@@ -62,7 +62,7 @@ header{
 
 
 
-section{
+.section{
     background-color:#ffffff;
     box-shadow: 2px 2px 5px #353535;
     padding: 10px 10px 10px 10px ;
@@ -92,5 +92,18 @@ padding-bottom:10px;
 
 .option{
     
+margin-bottom: 10px
+}
 
+.error{
+    color: red;
+    font-weight: bold;
+    }
+
+.correct{
+ color: darkgreen;
+    font-weight: bold;
+}
+.reset{
+display:none;
 }
